@@ -4,7 +4,7 @@ on:
   # but only for the main branch
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,8 +17,8 @@ jobs:
       - name: Build and push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push -a gspp-mainproject web
+        run: heroku container:push -a gsppp web
       - name: Release
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a gspp-mainproject web
+        run: heroku container:release -a gsppp web
