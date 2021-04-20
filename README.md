@@ -3,24 +3,8 @@
 [![Made With Python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 [![Creative Commons](http://ForTheBadge.com/images/badges/cc-0.svg)](https://creativecommons.org/share-your-work/public-domain/cc0/)
 
-[![Website](https://img.shields.io/badge/Open-WebApp-red)](https://gspp-mainproject.herokuapp.com/)
-
-[![Generic badge](https://img.shields.io/badge/Tensorflow-2.4.1-orange.svg)](https://www.tensorflow.org/learn)
-[![Generic badge](https://img.shields.io/badge/Joblib-1.0.1-cyan.svg)](https://joblib.readthedocs.io/en/latest/)
-[![Generic badge](https://img.shields.io/badge/Pandas-1.2.3-darkblue.svg)](https://pandas.pydata.org/)
-[![Generic badge](https://img.shields.io/badge/Matplotlib-3.3.4-yellow.svg)](https://matplotlib.org/)
-[![Generic badge](https://img.shields.io/badge/Keras_Tuner-1.0.2-green.svg)](https://keras-team.github.io/keras-tuner/)
-[![Generic badge](https://img.shields.io/badge/py_currency_converter-1.0.2-blue.svg)](https://pypi.org/project/py-currency-converter/)
-[![Generic badge](https://img.shields.io/badge/yfinance-0.1.55-red.svg)](https://pypi.org/project/yfinance/)
-[![Generic badge](https://img.shields.io/badge/numpy-1.19.5-violet.svg)](https://numpy.org/doc/stable/)
-[![Generic badge](https://img.shields.io/badge/scikit_learn-0.24.1-maroon.svg)](https://scikit-learn.org/stable/)
-[![Generic badge](https://img.shields.io/badge/nltk-3.6.1-darkgreen.svg)](https://pypi.org/project/beautifulsoup4/)
-[![Generic badge](https://img.shields.io/badge/beautifulsoup-4.9.3-brown.svg)](https://pypi.org/project/beautifulsoup4)
-
-[![Maintaner](https://img.shields.io/badge/maintainer-GeezFORCE-red)](https://gitlab.com/GeezFORCE)
-[![Maintaner](https://img.shields.io/badge/maintainer-cjalvin24-yellow)](https://gitlab.com/cjalvin24)
-[![Maintaner](https://img.shields.io/badge/maintainer-vaishnavmenon99-brightgreen)](https://gitlab.com/vaishnavmenon99)
-[![Maintaner](https://img.shields.io/badge/maintainer-skifobabu123-9cf)](https://gitlab.com/skifobabu123)
+![Heroku Deploy Status](https://pyheroku-badge.herokuapp.com/?app=gsppp&style=flat)
+[![Heroku App Status](https://heroku-shields.herokuapp.com/gsppp)](https://gsppp.herokuapp.com)
 
 ## To Get Started
 
