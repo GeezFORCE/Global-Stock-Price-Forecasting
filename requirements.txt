@@ -1,4 +1,4 @@
-nltk==3.6.1
+nltk==3.6.2
 tensorflow==2.5.0rc0
 py_currency_converter==1.2.0
 streamlit==0.80.0
