@@ -68,7 +68,7 @@
 
 ### To run UI
 
-- Navigate to `Streamlit`
+- Navigate to Project Folder
 - Run the command `streamlit run app.py`
 - Open `http://localhost:8501/`
 
