@@ -9,19 +9,22 @@
 - [ ] More input sanitation (accepting BTC-USD, ^DJI etc)
 - [ ] Figure out graph plot for sentimental analysis
 
+#### 20-04-2021
+
+- [x] Create colab file for 25% presentation
+
 #### 19-04-2021
 
-- [X] Created mirror repo in github 
-- [X] Created github action to deploy docker image to heroku
-
+- [x] Created mirror repo in github
+- [x] Created github action to deploy docker image to heroku
 
 #### 18-04-2021
 
-- [X] Looked into Docker
+- [x] Looked into Docker
 
 #### 17-04-2021
 
-- [X] UI - Finviz Sentimental Analysis
+- [x] UI - Finviz Sentimental Analysis
 
 #### 16-04-2021
 
