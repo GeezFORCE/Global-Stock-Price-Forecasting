@@ -3,6 +3,7 @@ import streamlit as st
 
 # Internal Imports
 from .. import FinvizSentimentalAnalysis
+from .. import TwitterSentimentalAnalysis
 from .. import constants
 
 def startSentimentalAnalysis(ticker):
@@ -23,8 +24,11 @@ def startSentimentalAnalysis(ticker):
         if st.sidebar.button(label='Analyze', help='Click to start sentimental analysis, it may take some time'):
         # st.plotly_chart(FinvizSentimentalAnalysis.finvizSentimentalAnalysis(constants.TICKER_SET))
             finvizMeanScores = FinvizSentimentalAnalysis.finvizSentimentalAnalysis(constants.TICKER_SET)
-            finviz, twitter, stocktwits, reddit = st.beta_columns(4)
+            finviz, twitter = st.beta_columns(2)
             with finviz:
                 st.markdown('### Finviz Scores')
                 for i in range(len(finvizMeanScores.index)):
                     st.write(f'{finvizMeanScores.index[i]} : {finvizMeanScores[finvizMeanScores.index[i]]}')
+            with twitter:
+                st.markdown('### Twitter')
+                st.write(TwitterSentimentalAnalysis.twitterSentimentalAnalysis())

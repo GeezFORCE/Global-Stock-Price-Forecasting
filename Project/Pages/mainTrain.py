@@ -1,6 +1,5 @@
 # External Imports
 import streamlit as st
-import sys
 
 # Internal Imports
 from .. import constants
@@ -98,7 +97,9 @@ def mainTrain(ticker):
             st.write('One or more inputs are invalid, please enter the right parameters')
         else:
             if st.sidebar.button(label='Train', help='Click to start Training, it may take some time'):
+                # placeholder = st.empty()
                 fig = Train.trainModel()
+                # placeholder.text('Training Finished')
                 st.write('Training Results')
                 st.write(f'TICKER : {constants.TICKER_TO_PREDICT} TICKER SET : {constants.TICKER_SET}')
                 st.plotly_chart(fig)
