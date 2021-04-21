@@ -70,13 +70,13 @@ def mainTrain(ticker):
                                                         value=64, 
                                                         step=2, 
                                                         help='Number of neurons in each dense layer, Greater the neurons greater the time required')
-        constants.NO_OF_BIDIRECTIONAL_LAYERS = st.sidebar.slider(label='Number of Normal Layers', 
+        constants.NO_OF_BIDIRECTIONAL_LAYERS = st.sidebar.number_input(label='Number of Normal Layers', 
                                                                 min_value=1, 
                                                                 max_value=5, 
                                                                 value=1, 
                                                                 step=1, 
                                                                 help='Number of LSTM Layers, Greater the layers greater the time required')
-        constants.NO_OF_DENSE_LAYERS = st.sidebar.slider(label='Number of Dense Layers', 
+        constants.NO_OF_DENSE_LAYERS = st.sidebar.number_input(label='Number of Dense Layers', 
                                                         min_value=1, 
                                                         max_value=3, 
                                                         value=1, 
