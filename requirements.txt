@@ -3,7 +3,7 @@ tensorflow==2.5.0rc0
 py_currency_converter==1.2.0
 streamlit==0.80.0
 joblib==1.0.1
-pandas==1.2.3
+pandas==1.2.4
 plotly==4.14.3
 matplotlib==3.3.4
 yfinance==0.1.59
