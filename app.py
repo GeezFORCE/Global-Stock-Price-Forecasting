@@ -27,7 +27,7 @@ else:
     elif mainNavigation == 'Train':
         st.markdown('# Train')
         mainTrain(constants.TICKER_TO_PREDICT)
-    elif mainNavigation == 'Predict':
+    elif mainNavigation == 'Forecast':
         st.markdown('# Forecast')
         mainPredict(constants.TICKER_TO_PREDICT)
     elif mainNavigation == 'Sentimental Analysis':
