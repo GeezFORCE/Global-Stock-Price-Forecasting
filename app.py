@@ -8,7 +8,6 @@ from Project.Pages.mainTrain import mainTrain
 from Project.Pages.mainPredict import mainPredict
 from Project.Pages.sentimentalAnalysisOverview import startSentimentalAnalysis
 from Project import constants
-from Project import test
 
 # Sidebar component for Main Navigation
 # Controls Overview, Train,, Predict, Sentimental Analysis and About Pages
