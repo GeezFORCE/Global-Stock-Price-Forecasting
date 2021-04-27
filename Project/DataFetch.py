@@ -8,29 +8,29 @@ import pandas as pd
 # Internal Imports
 from . import constants
 from . import SaveData
-from . import CurrencyConversion
+from .CurrencyConversion import convertCurrency
 
 # Function to fetch data based on Tickers provided
 
 
-def getData():
+def getData(save, period=constants.PERIOD):
     stocks = pd.DataFrame()
     stocks = yf.download(tickers=constants.TICKER_SET, 
-                         period=constants.PERIOD, 
+                         period=period, 
                          interval=constants.INTERVAL,
                          group_by='Ticker', 
                          auto_adjust=True, 
                          prepost=False, 
                          threads=True, 
                          proxy=None)
-
-    SaveData.saveCSV(stocks, "OrginalStocks")
+    if save:
+        SaveData.saveCSV(stocks, "OrginalStocks")
 
     stocks = stocks.drop(['Low', 'Open', 'High'], axis=1, level=1)  # Deleting columns we donot want
     stocks = stocks.fillna(stocks.mean())   # Fill the NaN values with the mean of columns
 
-    stocks = CurrencyConversion.convertCurrency(stocks)
-
-    SaveData.saveCSV(stocks, "stocks")
+    stocks = convertCurrency(stocks)
+    if save:
+        SaveData.saveCSV(stocks, "stocks")
 
     return stocks

@@ -24,16 +24,16 @@
 #### Dropoutrate
 #### Return Sequences
 ### Train Button
-## Predict
-### Interval
-### Predict Button
+## Forecast
+### Forecast Period
+### Forecast Button
+### Select Model
+### Select Model Weights
 ## Sentimental Analysis
 ### Scores
 #### Ticker Set
 #### Analyze
 ### Finviz 
 ### Twitter
-### !Reddit
-### Stocktwits
 ##About
 ```

@@ -4,10 +4,17 @@
 
 - [ ] Implement Reverse Currency Convertion (After Prediction Class)
 - [ ] ARIMA Model
-- [ ] Write Prediction class
 - [ ] Implement tensorboard custom metrics(optional)
 - [ ] More input sanitation (accepting BTC-USD, ^DJI etc)
 - [ ] Figure out graph plot for sentimental analysis
+
+#### 25-04-2021 - 27-04-2021
+
+- [x] Implement Prediction
+
+#### 21-04-2021 - 24-04-2021
+
+- [x] Research for Paper
 
 #### 20-04-2021
 

@@ -30,6 +30,10 @@ NO_OF_DENSE_LAYERS=1
 DROPOUTRATE=0.01
 RETURN_SEQUENCES=False
 
+# Forecast Controls
+
+PERIOD_TO_FORECAST = 3
+
 # Name of Model save file
 NAME = f"{TICKER_TO_PREDICT}-SEQ-{'-'.join(TICKER_SET)}-PRED-{int(time.time())}"
 

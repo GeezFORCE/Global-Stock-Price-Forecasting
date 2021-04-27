@@ -20,6 +20,8 @@ from . import SaveModel
 from . import ScaleData
 from . import plot
 
+# tf.get_logger().setLevel('INFO')
+
 def trainModel():
 
     if __name__ != '__main__':
@@ -28,7 +30,7 @@ def trainModel():
         st.sidebar.write('Donot click train again!!!!!!') 
     # Data Fetch
     stocks = pd.DataFrame()
-    stocks = DataFetch.getData()
+    stocks = DataFetch.getData(True)
 
     # Dataset Creation and Scaling of Data
     train, validation, XTrain, YTrain, XValidation, YValidation = DatasetCreation.initialize(stocks)

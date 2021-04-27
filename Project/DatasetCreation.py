@@ -3,6 +3,7 @@
 
 # External Imports
 import numpy as np
+import streamlit as st
 
 # Internal Imports
 from . import constants
@@ -18,7 +19,6 @@ def createDataset(x, y, timeSteps=1):
         X.append(x.iloc[i:(i + timeSteps)].values)
         Y.append(y.iloc[i + timeSteps])
     return np.array(X), np.array(Y)
-
 
 # Function to call Scale() and createDataset()
 
@@ -39,3 +39,11 @@ def initialize(stocks):
     SaveData.saveNumpy(XValidation, "XValidation")
     SaveData.saveNumpy(YValidation, "YValidation")
     return train, validation, XTrain, YTrain, XValidation, YValidation
+
+def initializeForecast(forecastStocks):
+    scaledForecast= ScaleData.ScaleForecast(forecastStocks)
+    # st.write(scaledForecast)
+    yScaledForecast = scaledForecast[constants.TICKER_TO_PREDICT]['Close']
+    XScaledForecast, YScaledForecast = createDataset(scaledForecast, yScaledForecast, constants.TIMESTEPS)
+    
+    return XScaledForecast, YScaledForecast

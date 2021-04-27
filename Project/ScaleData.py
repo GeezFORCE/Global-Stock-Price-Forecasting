@@ -6,6 +6,7 @@ import joblib
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+import streamlit as st
 
 # Internal Imports
 from . import constants
@@ -45,3 +46,23 @@ def inverseScale(train, YTrain, YValidation, YPred):
     joblib.dump(closeScaler, closeScalerFilename)
 
     return YPredInv, YValidationInv 
+
+
+def ScaleForecast(forecastStocks):
+    featureScaler = MinMaxScaler(feature_range=(-1, 1))
+    scaledForecastStocks = forecastStocks.copy()
+    for ticker in constants.TICKER_SET:
+        featureScaler.fit(forecastStocks.loc[:, ticker])
+        scaledForecastStocks.loc[:, ticker] = featureScaler.transform(forecastStocks.loc[:, ticker])
+
+    return scaledForecastStocks
+
+def inverseScaleForecast(forecastStocks, YPred):
+
+    closeScaler = MinMaxScaler(feature_range=(-1, 1))
+    closeScaler.fit(np.array(forecastStocks.loc[:, (constants.TICKER_TO_PREDICT, 'Close')]).reshape(-1, 1))
+    YPredInv = closeScaler.inverse_transform(YPred.reshape(-1, 1))
+
+    # joblib.dump(closeScaler, closeScalerFilename)
+
+    return YPredInv

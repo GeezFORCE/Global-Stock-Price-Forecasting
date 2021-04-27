@@ -5,7 +5,6 @@
 
 [![Deploy Docker to Heroku](https://github.com/GeezFORCE/MainProject/workflows/Build%20Docker%20image%20and%20deploy%20to%20Heroku/badge.svg)](https://github.com/GeezFORCE/MainProject/workflows)
 
-
 ![Heroku Deploy Status](https://pyheroku-badge.herokuapp.com/?app=gsppp&style=flat)
 [![Heroku App Status](https://heroku-shields.herokuapp.com/gsppp)](https://gsppp.herokuapp.com)
 
@@ -64,17 +63,17 @@
     │   │   ├── Dropoutrate
     │   │   └── Return Sequences
     │   └── Train Button
-    ├── Predict
-    │   ├── Interval
-    │   └── Predict Button
+    ├── Forecast
+    │   ├── Forecast Period
+    │   ├── Forecast Button
+    │   ├── Select Model
+    │   └── Select Model Weights
     ├── Sentimental Analysis
     │   ├── Scores
     │   │   ├── Ticker Set
     │   │   └── Analyze
     │   ├── Finviz
-    │   ├── Twitter
-    │   ├── !Reddit
-    │   └── Stocktwits
+    │   └── Twitter
     └── About
 
 ```
