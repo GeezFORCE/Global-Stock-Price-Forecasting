@@ -11,4 +11,4 @@ joblib==1.0.1
 py_currency_converter==1.2.0
 beautifulsoup4==4.9.3
 Pillow==8.2.0
-scikit_learn==0.24.1
+scikit_learn==0.24.2
