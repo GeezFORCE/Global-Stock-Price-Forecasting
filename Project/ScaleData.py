@@ -39,7 +39,7 @@ def inverseScale(train, YTrain, YValidation, YPred):
     closeScaler = RobustScaler()
     closeScaler.fit(np.array(train.loc[:, (constants.TICKER_TO_PREDICT, 'Close')]).reshape(-1, 1))
 
-    YTrainInv = closeScaler.inverse_transform(YTrain.reshape(1, -1))
+    #YTrainInv = closeScaler.inverse_transform(YTrain.reshape(1, -1))
     YValidationInv = closeScaler.inverse_transform(YValidation.reshape(-1, 1))
     YPredInv = closeScaler.inverse_transform(YPred.reshape(-1, 1))
 

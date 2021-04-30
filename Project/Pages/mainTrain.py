@@ -23,7 +23,7 @@ def mainTrain(ticker):
         # Yfinance Controls
         st.sidebar.subheader('Data Parameters')
         constants.PERIOD = st.sidebar.select_slider(label='Period',
-                                                    value='5y',
+                                                    value='10y',
                                                     options=['1mo', '5mo', '1y', '5y', '10y', 'max'], 
                                                     help='Range of data to be fetched, select smaller values for accurate results')
         
@@ -31,14 +31,14 @@ def mainTrain(ticker):
         st.sidebar.subheader('Training Parameters')
         constants.EPOCHS = st.sidebar.slider(label='Epochs', 
                                              min_value=1, 
-                                             max_value=50, 
-                                             value=30, 
+                                             max_value=200, 
+                                             value=50, 
                                              step=1, 
                                              help='Epochs the model should run')
         constants.BATCH_SIZE = st.sidebar.slider(label='Batch Size', 
                                              min_value=8, 
-                                             max_value=128, 
-                                             value=32, 
+                                             max_value=256, 
+                                             value=128, 
                                              step=8, 
                                              help='Batch Size of inputs')
         constants.VALIDATION_SET_PERCENTAGE =0.01*(st.sidebar.slider(label='Validation Split', 
@@ -50,7 +50,7 @@ def mainTrain(ticker):
         constants.LEARNING_RATE = st.sidebar.slider(label='Learning Rate', 
                                              min_value=0.001, 
                                              max_value=0.1, 
-                                             value=0.0375, 
+                                             value=0.03, 
                                              step=0.010, 
                                              help='Learning Rate for optimizer')
 
@@ -66,7 +66,7 @@ def mainTrain(ticker):
         constants.NO_OF_DENSE_UNITS = st.sidebar.slider(label='Number of Dense Units', 
                                                         min_value=2, 
                                                         max_value=512, 
-                                                        value=64, 
+                                                        value=32, 
                                                         step=2, 
                                                         help='Number of neurons in each dense layer, Greater the neurons greater the time required')
         constants.NO_OF_BIDIRECTIONAL_LAYERS = st.sidebar.number_input(label='Number of Normal Layers', 
@@ -84,7 +84,7 @@ def mainTrain(ticker):
         constants.DROPOUTRATE = st.sidebar.slider(label='Dropout Rate', 
                                                 min_value=0.01, 
                                                 max_value=0.1, 
-                                                value=0.01, 
+                                                value=0.02, 
                                                 step=0.01, 
                                                 help='Dropout Rate to prevent overfitting')
         constants.RETURN_SEQUENCES = st.sidebar.checkbox(label='Return Sequences',
