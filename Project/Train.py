@@ -20,8 +20,6 @@ from . import SaveModel
 from . import ScaleData
 from . import plot
 
-# tf.get_logger().setLevel('INFO')
-
 def trainModel():
 
     if __name__ != '__main__':
@@ -54,10 +52,10 @@ def trainModel():
     tensorboard = TensorBoard(log_dir=f'logs/{constants.NAME}')
 
     # Checkpoint Defenition and Model Step Saves
-    filepath = "RNN_Final-{epoch:02d}"
-    checkpoint = ModelCheckpoint("models/{}.model".format(filepath, monitor='val_acc',
-                                                        save_weights_only=False, verbose=0,
-                                                        save_best_only=True, mode='max'))
+    # filepath = "RNN_Final-{epoch:02d}"
+    # checkpoint = ModelCheckpoint("models/{}.model".format(filepath, monitor='val_acc',
+                                                        # save_weights_only=False, verbose=0,
+                                                        # save_best_only=True, mode='max'))
 
     # Model Fit
     history = model.fit(
@@ -66,7 +64,7 @@ def trainModel():
         batch_size=constants.BATCH_SIZE,
         validation_split=constants.VALIDATION_SET_PERCENTAGE,
         shuffle=False,
-        callbacks=[tensorboard, checkpoint]
+        callbacks=[tensorboard]
     )
 
     # Save Model
