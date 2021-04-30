@@ -5,7 +5,7 @@
 import joblib
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import RobustScaler
 import streamlit as st
 
 # Internal Imports
@@ -19,7 +19,7 @@ closeScalerFilename = "saveScaler/closeScaler.save"
 
 
 def Scale(train, validation):
-    featureScaler = MinMaxScaler(feature_range=(-1, 1))
+    featureScaler = RobustScaler()
     scaledTrain, scaledValidation = train.copy(), validation.copy()
     for ticker in constants.TICKER_SET:
         featureScaler.fit(train.loc[:, ticker])
@@ -36,11 +36,11 @@ def Scale(train, validation):
 
 def inverseScale(train, YTrain, YValidation, YPred):
 
-    closeScaler = MinMaxScaler(feature_range=(-1, 1))
+    closeScaler = RobustScaler()
     closeScaler.fit(np.array(train.loc[:, (constants.TICKER_TO_PREDICT, 'Close')]).reshape(-1, 1))
 
     YTrainInv = closeScaler.inverse_transform(YTrain.reshape(1, -1))
-    YValidationInv = closeScaler.inverse_transform(YValidation.reshape(1, -1))
+    YValidationInv = closeScaler.inverse_transform(YValidation.reshape(-1, 1))
     YPredInv = closeScaler.inverse_transform(YPred.reshape(-1, 1))
 
     joblib.dump(closeScaler, closeScalerFilename)
@@ -49,7 +49,7 @@ def inverseScale(train, YTrain, YValidation, YPred):
 
 
 def ScaleForecast(forecastStocks):
-    featureScaler = MinMaxScaler(feature_range=(-1, 1))
+    featureScaler = RobustScaler()
     scaledForecastStocks = forecastStocks.copy()
     for ticker in constants.TICKER_SET:
         featureScaler.fit(forecastStocks.loc[:, ticker])
@@ -59,7 +59,7 @@ def ScaleForecast(forecastStocks):
 
 def inverseScaleForecast(forecastStocks, YPred):
 
-    closeScaler = MinMaxScaler(feature_range=(-1, 1))
+    closeScaler = RobustScaler()
     closeScaler.fit(np.array(forecastStocks.loc[:, (constants.TICKER_TO_PREDICT, 'Close')]).reshape(-1, 1))
     YPredInv = closeScaler.inverse_transform(YPred.reshape(-1, 1))
 

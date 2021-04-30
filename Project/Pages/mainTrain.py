@@ -8,7 +8,7 @@ from .. import Train
 # Function to create UI for train 
 def mainTrain(ticker):
     st.sidebar.subheader('Related Tickers')
-    defaultInputList = "MSFT, NVDA" #  Default ticker inputs
+    defaultInputList = "AAPL, AMZN, FB" #  Default ticker inputs
     userInputTickers = st.sidebar.text_area(label='Related Tickers', 
                         value=defaultInputList, 
                         help='Enter similar tickers in comma separated form, greater the similarity between tickers greater the accuracy')
@@ -93,7 +93,7 @@ def mainTrain(ticker):
         
         # Checks if dense layers and/or units are greater in number 
         # than LSTM units
-        if constants.NO_OF_LSTM_UNITS <= constants.NO_OF_DENSE_UNITS or constants.NO_OF_BIDIRECTIONAL_LAYERS < constants.NO_OF_DENSE_LAYERS:
+        if constants.NO_OF_LSTM_UNITS <= constants.NO_OF_DENSE_UNITS:
             st.write('One or more inputs are invalid, please enter the right parameters')
         else:
             if st.sidebar.button(label='Train', help='Click to start Training, it may take some time'):

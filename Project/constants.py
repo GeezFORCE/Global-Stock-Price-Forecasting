@@ -6,8 +6,8 @@ import time
 import tensorflow as tf
 
 # Stock Selection
-TICKER_TO_PREDICT = 'MSFT'
-TICKER_SET = ['ORCL', 'MSFT', 'NVDA']
+TICKER_TO_PREDICT = 'GOOG'
+TICKER_SET = ['AAPL', 'AMZN', 'FB']
 
 # YFinance Controls
 PERIOD = '10y'

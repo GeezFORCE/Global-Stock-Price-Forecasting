@@ -12,7 +12,7 @@ from Project import constants
 # Sidebar component for Main Navigation
 # Controls Overview, Train,, Predict, Sentimental Analysis and About Pages
 st.sidebar.header('Global Stock Price Prediction')
-constants.TICKER_TO_PREDICT = st.sidebar.text_input(label='Ticker', value='MSFT', help='Input the ticker')
+constants.TICKER_TO_PREDICT = st.sidebar.text_input(label='Ticker', value='GOOG', help='Input the ticker')
 if not constants.TICKER_TO_PREDICT[0:len(constants.TICKER_TO_PREDICT)].isalpha():
     st.write('Ticker is invalid, Enter again')
 else:

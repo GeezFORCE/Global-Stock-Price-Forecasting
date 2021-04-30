@@ -4,11 +4,8 @@
 
 # External Imports
 import pandas as pd
-import numpy as np
-import tensorflow as tf
 import streamlit as st
-import plotly.graph_objs as go
-from tensorflow.keras.callbacks import TensorBoard, ModelCheckpoint
+from tensorflow.keras.callbacks import TensorBoard
 
 # Local Imports
 from . import constants
@@ -54,8 +51,8 @@ def trainModel():
     # Checkpoint Defenition and Model Step Saves
     # filepath = "RNN_Final-{epoch:02d}"
     # checkpoint = ModelCheckpoint("models/{}.model".format(filepath, monitor='val_acc',
-                                                        # save_weights_only=False, verbose=0,
-                                                        # save_best_only=True, mode='max'))
+    #                                                     save_weights_only=False, verbose=0,
+    #                                                     save_best_only=True, mode='max'))
 
     # Model Fit
     history = model.fit(
@@ -64,7 +61,7 @@ def trainModel():
         batch_size=constants.BATCH_SIZE,
         validation_split=constants.VALIDATION_SET_PERCENTAGE,
         shuffle=False,
-        callbacks=[tensorboard]
+        callbacks=[tensorboard]#, checkpoint]
     )
 
     # Save Model
