@@ -1,4 +1,4 @@
-streamlit==0.81.0
+streamlit==0.81.1
 keras_tuner==1.0.2
 tensorflow==2.5.0rc0
 nltk==3.6.1
