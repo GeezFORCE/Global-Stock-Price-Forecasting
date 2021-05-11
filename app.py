@@ -12,28 +12,27 @@ from Project import constants
 # Sidebar component for Main Navigation
 # Controls Overview, Train,, Predict, Sentimental Analysis and About Pages
 st.sidebar.header('Global Stock Price Prediction')
-constants.TICKER_TO_PREDICT = st.sidebar.text_input(label='Ticker', value='GOOG', help='Input the ticker')
-if not constants.TICKER_TO_PREDICT[0:len(constants.TICKER_TO_PREDICT)].isalpha():
-    st.write('Ticker is invalid, Enter again')
-else:
-    mainNavigation = st.sidebar.selectbox(label='Navigation',
-                        options=['Overview', 'Train', 'Forecast', 'Sentimental Analysis', 'About'],
-                        help='Switch between different views')
+# constants.TICKER_TO_PREDICT = st.sidebar.text_input(label='Ticker', value='GOOG', help='Input the ticker')
+# if not constants.TICKER_TO_PREDICT[0:len(constants.TICKER_TO_PREDICT)].isalpha():
+#     st.write('Ticker is invalid, Enter again')
+# else:
+mainNavigation = st.sidebar.selectbox(label='Navigation',
+                    options=['Overview', 'Train', 'Forecast', 'Sentimental Analysis', 'About'],
+                    help='Switch between different views')
 
-    # If-Else statement to control Main Navigation
-    if mainNavigation == 'Overview':
-        st.markdown('# Overview')
-        mainOverview(constants.TICKER_TO_PREDICT)
-    elif mainNavigation == 'Train':
-        st.markdown('# Train')
-        mainTrain(constants.TICKER_TO_PREDICT)
-    elif mainNavigation == 'Forecast':
-        st.markdown('# Forecast')
-        mainPredict(constants.TICKER_TO_PREDICT)
-    elif mainNavigation == 'Sentimental Analysis':
-        st.markdown('# Sentimental Analysis')
-        startSentimentalAnalysis(constants.TICKER_TO_PREDICT)
-    elif mainNavigation == 'About':
-        st.markdown('# About')
-        mainAbout()
-    
+# If-Else statement to control Main Navigation
+if mainNavigation == 'Overview':
+    st.markdown('# Overview')
+    mainOverview()
+elif mainNavigation == 'Train':
+    st.markdown('# Train')
+    mainTrain()
+elif mainNavigation == 'Forecast':
+    st.markdown('# Forecast')
+    mainPredict()
+elif mainNavigation == 'Sentimental Analysis':
+    st.markdown('# Sentimental Analysis')
+    startSentimentalAnalysis()
+elif mainNavigation == 'About':
+    st.markdown('# About')
+    mainAbout()

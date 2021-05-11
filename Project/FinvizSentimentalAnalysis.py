@@ -4,16 +4,16 @@
 
 # Extrenal Imports
 import pandas as pd
-from urllib import request
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
+
+# NLTK imports and Intialization
 import nltk
 nltk.downloader.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 # Internal Imports
 from . import constants
-from . import plot
 from . import SaveData
 
 # Figure out how to integrate this onto the main model

@@ -3,7 +3,27 @@
 
 # External Imports
 import time
-import tensorflow as tf
+
+# Global Declarations
+global TICKER_TO_PREDICT
+global TICKER_SET
+global PERIOD
+global INTERVAL
+global EPOCHS 
+global BATCH_SIZE 
+global TIMESTEPS 
+global VALIDATION_SET_PERCENTAGE  
+global LOSS_FUNCTION 
+global METRICS
+global LEARNING_RATE
+global NO_OF_LSTM_UNITS
+global NO_OF_DENSE_UNITS
+global NO_OF_BIDIRECTIONAL_LAYER
+global NO_OF_DENSE_LAYER
+global DROPOUTRATE
+global RETURN_SEQUENCES
+global PERIOD_TO_FORECAST 
+global NAME
 
 # Stock Selection
 TICKER_TO_PREDICT = 'GOOG'
@@ -33,9 +53,6 @@ RETURN_SEQUENCES=False
 # Forecast Controls
 
 PERIOD_TO_FORECAST = 3
-
-# Name of Model save file
-NAME = f"{TICKER_TO_PREDICT}-SEQ-{'-'.join(TICKER_SET)}-PRED-{int(time.time())}"
 
 # Finviz Sentimental Analysis
 FINVIZ_URL = 'https://finviz.com/quote.ashx?t='
