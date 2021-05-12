@@ -1,3 +1,5 @@
+''' companyOverview.py : Get Overview about the ticker selected'''
+
 # External Imports
 import streamlit as st
 import yfinance as yf

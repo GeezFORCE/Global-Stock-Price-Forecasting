@@ -1,14 +1,13 @@
+''' mainOverview.py : Page for navigating the various overview pages'''
+
+
 # External Imports
-# External Imports
-from Project.constants import TICKER_TO_PREDICT
 import streamlit as st
-import yfinance as yf
 
 # Internal Imports
 from . import companyOverview
 from . import financialsOverview
 from . import stockCharts
-from .. import constants
 
 # Function calling Overview Pages
 def mainOverview():

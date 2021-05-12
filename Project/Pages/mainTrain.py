@@ -1,3 +1,6 @@
+''' mainTrain.py : Page for training process'''
+
+
 # External Imports
 import time
 import streamlit as st

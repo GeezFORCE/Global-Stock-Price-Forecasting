@@ -15,8 +15,7 @@ from . import constants
 featureScalerFilename = "saveScaler/featureScaler.save"
 closeScalerFilename = "saveScaler/closeScaler.save"
 
-# Function to perform scaling on the data
-
+# Function to perform scaling on the data for training
 
 def Scale(train, validation):
     featureScaler = RobustScaler()
@@ -31,8 +30,9 @@ def Scale(train, validation):
 
     return scaledTrain, scaledValidation
 
-# Function to perform inverse scaling for vizualization and output
 
+
+# Function to perform inverse scaling for training
 
 def inverseScale(train, YTrain, YValidation, YPred):
 
@@ -48,6 +48,8 @@ def inverseScale(train, YTrain, YValidation, YPred):
     return YPredInv, YValidationInv 
 
 
+# Function to scale data for forecasting
+
 def ScaleForecast(forecastStocks):
     featureScaler = RobustScaler()
     scaledForecastStocks = forecastStocks.copy()
@@ -56,6 +58,9 @@ def ScaleForecast(forecastStocks):
         scaledForecastStocks.loc[:, ticker] = featureScaler.transform(forecastStocks.loc[:, ticker])
 
     return scaledForecastStocks
+
+
+# Function to perform inverse scaling for forecasting
 
 def inverseScaleForecast(forecastStocks, YPred):
 

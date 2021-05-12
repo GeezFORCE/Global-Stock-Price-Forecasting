@@ -1,3 +1,7 @@
+''' financialsOverview.py : Get Quarterly financials, major and institutional 
+                            holders about the ticker selected'''
+
+
 # External Imports
 import streamlit as st
 import yfinance as yf

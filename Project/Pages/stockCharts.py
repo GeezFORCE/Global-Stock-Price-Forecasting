@@ -1,3 +1,6 @@
+''' stockCharts.py : Function to draw stock charts'''
+
+
 # External Imports
 import streamlit as st
 import plotly.express as px

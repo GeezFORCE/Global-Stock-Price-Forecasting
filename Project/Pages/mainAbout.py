@@ -1,3 +1,6 @@
+''' mainAbout.py : Information about the project and authors'''
+
+
 # External Imports
 import streamlit as st
 
