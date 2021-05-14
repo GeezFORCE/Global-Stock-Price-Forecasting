@@ -88,9 +88,14 @@ def mainTrain():
                                             value=0.02, 
                                             step=0.01, 
                                             help='Dropout Rate to prevent overfitting')
-    constants.RETURN_SEQUENCES = st.sidebar.checkbox(label='Return Sequences',
+    # Automatically sets return sequences if number of bidirectional layers is > 1, else sets it false 
+    if(constants.NO_OF_BIDIRECTIONAL_LAYERS>1):
+        constants.RETURN_SEQUENCES = True
+    else:
+        constants.RETURN_SEQUENCES = False
+    """constants.RETURN_SEQUENCES = st.sidebar.checkbox(label='Return Sequences',
                                                     value=False,
-                                                    help='Check if you want bidirectional layers, Greater the time required')
+                                                    help='Check if you want bidirectional layers, Greater the time required')"""
     
     constants.NAME = f"{constants.TICKER_TO_PREDICT}-SEQ-{'-'.join(constants.TICKER_SET)}-PRED-{int(time.time())}"
 
