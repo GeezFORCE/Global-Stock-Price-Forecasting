@@ -14,12 +14,13 @@ from .DatasetCreation import initializeForecast
 from .ScaleData import inverseScaleForecast
 from . import constants
 from . import Prediction
+from .CurrencyConversion import inverseConvertCurrency
 
 # Function to generate a plotly graph of the forecast 
 
 def getStockChart(outputStocks, datelist):
     fig = px.line(outputStocks, x=datelist,
-                  y=outputStocks[constants.TICKER_TO_PREDICT]['Close'], title='Forecast')
+                  y=inverseConvertCurrency(outputStocks[constants.TICKER_TO_PREDICT]['Close']), title='Forecast')
     fig.layout.update(xaxis_rangeslider_visible=True)
     return fig
 
@@ -65,7 +66,7 @@ def getForecast(period, modelFilename, weightsFilename):
     for i in range(period):
         YPredInv = getModelPrediction(loadedModel, stocks)
         if i == 0:
-            st.write(f'Forecast for tomorrow : {float(YPredInv[-1])}')
+            st.write(f'Forecast for tomorrow : {float(inverseConvertCurrency(YPredInv[-1]))}')
         lastRow = stocks.tail(1)
         lastRow[constants.TICKER_TO_PREDICT, 'Close'] = YPredInv[-1]
         stocks = stocks.append(lastRow)
