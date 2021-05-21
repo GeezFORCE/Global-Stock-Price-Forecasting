@@ -16,7 +16,7 @@ from .. import Train
 def mainTrain():
     constants.TICKER_TO_PREDICT = st.sidebar.text_input(label='Ticker', value='GOOG', help='Input the ticker')
     st.sidebar.subheader('Related Tickers')
-    defaultInputList = "AAPL, AMZN, FB" #  Default ticker inputs
+    defaultInputList = "AAPL, AMZN" #  Default ticker inputs
     userInputTickers = st.sidebar.text_area(label='Related Tickers', 
                         value=defaultInputList, 
                         help='Enter similar tickers in comma separated form, greater the similarity between tickers greater the accuracy')
