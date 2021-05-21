@@ -27,7 +27,10 @@ def convertCurrency(stocks):
 
 # Function to convert the values back
 
-def inverseConvertCurrency(stocks):
-    # We don't know what to pass to this function because we need to implement
-    # prediction class
-    pass
+def inverseConvertCurrency(val):
+    earliertickercurrency = yf.Ticker(constants.TICKER_TO_PREDICT).info['currency']
+    if earliertickercurrency != 'USD':
+        conversionRate = convert(base='USD',amount=1, to=[earliertickercurrency])[earliertickercurrency]
+        val=val*conversionRate
+    return val
+    
