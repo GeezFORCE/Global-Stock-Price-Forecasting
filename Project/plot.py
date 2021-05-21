@@ -8,12 +8,13 @@ import streamlit as st
 
 # Internal Imports
 from . import constants
+from .CurrencyConversion import inverseConvertCurrency
 
 
 def PlotlyPlotValidation(validation, YPredInv, YValidationInv):
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=validation.index, y=YPredInv.flatten(), mode='lines', name='Prediction'))
-    fig.add_trace(go.Scatter(x=validation.index, y=YValidationInv.flatten(), mode='lines', name='Actual'))
+    fig.add_trace(go.Scatter(x=validation.index, y=inverseConvertCurrency(YPredInv).flatten(), mode='lines', name='Prediction'))
+    fig.add_trace(go.Scatter(x=validation.index, y=inverseConvertCurrency(YValidationInv).flatten(), mode='lines', name='Actual'))
     if constants.PERIOD in ['1y', '5y', '10y', 'max']:
             fig.layout.update(xaxis_rangeslider_visible=True)
     return fig
