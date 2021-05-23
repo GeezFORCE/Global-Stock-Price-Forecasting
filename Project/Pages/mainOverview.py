@@ -20,7 +20,11 @@ def mainOverview():
     elif tickerInformation == 'Financials':
         financialsOverview.getFinancialsOverview(ticker)
     elif tickerInformation == 'Charts':
-        st.write('Close Price')
-        st.plotly_chart(stockCharts.getStockChart(ticker, ['Close'], 'Close Price'))
-        st.write('Volume Traded')
-        st.plotly_chart(stockCharts.getStockChart(ticker, ['Volume'], 'Volume'))
+        try:
+            st.write('Close Price')
+            st.plotly_chart(stockCharts.getStockChart(ticker, ['Close'], 'Close Price'))
+            st.write('Volume Traded')
+            st.plotly_chart(stockCharts.getStockChart(ticker, ['Volume'], 'Volume'))
+
+        except :
+            pass 
