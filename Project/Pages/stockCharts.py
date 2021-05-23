@@ -9,7 +9,11 @@ import yfinance as yf
 # Function to draw Close and Open Prices of ticker
 
 def getStockChart(ticker, parameterList, title):
-    tickerData = yf.Ticker(ticker).history(period='max')
-    fig = px.line(tickerData, x=tickerData.index , y=parameterList, title=title)
-    fig.layout.update(xaxis_rangeslider_visible=True)
-    return fig
+    try:
+        tickerData = yf.Ticker(ticker).history(period='max')
+        fig = px.line(tickerData, x=tickerData.index , y=parameterList, title=title)
+        fig.layout.update(xaxis_rangeslider_visible=True)
+        return fig
+
+    except ValueError :
+        st.write("Please provide a Valid Ticker !")
