@@ -19,7 +19,7 @@ def mainPredict():
     constants.TICKER_TO_PREDICT = st.sidebar.text_input(
         label='Ticker', value='GOOG', help='Input the ticker')
     userInputTickers = st.sidebar.text_area(label='Related Tickers',
-                                            value="AAPL, AMZN, FB",
+                                            value="AAPL, AMZN",
                                             help='Enter similar tickers in comma separated form, greater the similarity between tickers greater the accuracy')
     constants.TICKER_SET = [i.strip(' ')
                             for i in userInputTickers.strip().split(',')]
@@ -42,5 +42,6 @@ def mainPredict():
         'savedModelInformation/modelWeights/*.h5', recursive=True), index=0, help='Selecting Weights of the model used for Forecast')
     if st.sidebar.button(label='Forecast', help='Click to start Forecasting, it may take some time'):
         st.sidebar.write('Forecast Started')
-        getForecast(constants.PERIOD_TO_FORECAST,
+        with st.spinner("Forecasting In Progress"):
+            getForecast(constants.PERIOD_TO_FORECAST,
                     selectedModelName, selectedModelWeights)

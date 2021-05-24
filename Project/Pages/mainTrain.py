@@ -108,13 +108,23 @@ def mainTrain():
         st.write('One or more inputs are invalid, please enter the right parameters')
     else:
         if st.sidebar.button(label='Train', help='Click to start Training, it may take some time'):
-            tickers = st.beta_columns(len(constants.TICKER_SET))
-            for i in range(len(constants.TICKER_SET)):
-                with tickers[i]:
-                    tickerInfo = yf.Ticker(constants.TICKER_SET[i]).info
-                    st.image(Image.open(urlopen(tickerInfo['logo_url'])), use_column_width='auto')
-                    st.write(f'Previous Close : {tickerInfo["previousClose"]}, {tickerInfo["currency"]}')
-            placeholder = st.empty()
-            with st.spinner("Training In Progress"):
-                fig = Train.trainModel()
-            placeholder.plotly_chart(fig)
+            try:
+                tickers = st.beta_columns(len(constants.TICKER_SET))
+                for i in range(len(constants.TICKER_SET)):
+                    with tickers[i]:
+                        tickerInfo = yf.Ticker(constants.TICKER_SET[i]).info
+                        try:
+                            st.image(Image.open(urlopen(tickerInfo['logo_url'])), use_column_width='auto')
+                        except:
+                            #Image Error
+                            st.write(tickerInfo['logo_url'])
+                            st.error("Something went wrong... Unable to load Logo")
+                        st.write(f'Previous Close : {tickerInfo["previousClose"]}, {tickerInfo["currency"]}')
+                placeholder = st.empty()
+                with st.spinner("Training In Progress"):
+                    fig = Train.trainModel()
+                placeholder.plotly_chart(fig)
+            except ValueError as ve:
+                st.error("Please provide a Valid Ticker !")
+            except KeyError as ke:
+                st.error("Please provide a Valid Ticker !")
