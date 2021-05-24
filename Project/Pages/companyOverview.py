@@ -21,7 +21,7 @@ def getCompanyOverview(ticker):
             except :
                 #Image Error
                 st.write(tickerInfo['logo_url'])
-                st.write("Something went wrong... Unable to load Logo")
+                st.error("Something went wrong...  \nUnable to load the Logo")
 
         with col2:
             st.header(f'{tickerInfo["longName"]} ({tickerInfo["symbol"]})')
@@ -38,9 +38,9 @@ def getCompanyOverview(ticker):
         st.write("Regular Market Open : ", tickerInfo["regularMarketOpen"])
     
     except ValueError :
-        st.write("Please provide a Valid Ticker !")
+        st.warning("Please provide a Valid Ticker !")
     except KeyError :
-        st.write("Either Ticker name is too long or that Isn't a Ticker! Please check.")
+        st.warning("Either Ticker name is too long or that Isn't a valid Ticker!")
     except NameError :
-        st.write("Ticker information not found")
+        st.error("Ticker information not found")
 

@@ -27,4 +27,4 @@ def mainOverview():
             st.plotly_chart(stockCharts.getStockChart(ticker, ['Volume'], 'Volume'))
 
         except :
-            pass 
+            st.warning("Warning !!! Check Parameters.") 

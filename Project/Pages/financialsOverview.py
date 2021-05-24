@@ -22,5 +22,5 @@ def getFinancialsOverview(ticker):
         institutionalHolders = yf.Ticker(ticker).institutional_holders
         st.plotly_chart(px.bar(institutionalHolders, x='Holder', y='Shares'))
         
-    except KeyError :
-        st.write("Please provide a Valid Ticker !")
+    except (KeyError, AttributeError) as e :
+        st.error("Please provide a Valid Ticker to get Financial info!")

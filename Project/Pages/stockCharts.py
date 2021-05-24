@@ -16,4 +16,4 @@ def getStockChart(ticker, parameterList, title):
         return fig
 
     except ValueError :
-        st.write("Please provide a Valid Ticker !")
+        st.error("Ticker provided is invalid !")
