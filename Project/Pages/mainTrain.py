@@ -113,7 +113,12 @@ def mainTrain():
                 for i in range(len(constants.TICKER_SET)):
                     with tickers[i]:
                         tickerInfo = yf.Ticker(constants.TICKER_SET[i]).info
-                        st.image(Image.open(urlopen(tickerInfo['logo_url'])), use_column_width='auto')
+                        try:
+                            st.image(Image.open(urlopen(tickerInfo['logo_url'])), use_column_width='auto')
+                        except:
+                            #Image Error
+                            st.write(tickerInfo['logo_url'])
+                            st.error("Something went wrong... Unable to load Logo")
                         st.write(f'Previous Close : {tickerInfo["previousClose"]}, {tickerInfo["currency"]}')
                 placeholder = st.empty()
                 with st.spinner("Training In Progress"):
