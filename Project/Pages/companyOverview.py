@@ -39,6 +39,8 @@ def getCompanyOverview(ticker):
     
     except ValueError :
         st.write("Please provide a Valid Ticker !")
-    #except NameError :
-    #    st.write("Ticker information not found")
+    except KeyError :
+        st.write("Ticker name too long... Is that even a Ticker? Please check.")
+    except NameError :
+        st.write("Ticker information not found")
 
