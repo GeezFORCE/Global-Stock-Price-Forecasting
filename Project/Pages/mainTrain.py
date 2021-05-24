@@ -2,6 +2,7 @@
 
 
 # External Imports
+from logging import exception
 import time
 import streamlit as st
 import yfinance as yf
@@ -24,7 +25,7 @@ def mainTrain():
     
     constants.TICKER_SET = [i.strip(' ') for i in userInputTickers.upper().strip().split(',')]
     if constants.TICKER_TO_PREDICT not in constants.TICKER_SET:
-        constants.TICKER_SET.append(constants.TICKER_TO_PREDICT) 
+        constants.TICKER_SET.append(constants.TICKER_TO_PREDICT)
     # Yfinance Controls
     st.sidebar.subheader('Data Parameters')
     constants.PERIOD = st.sidebar.select_slider(label='Period',
@@ -129,3 +130,5 @@ def mainTrain():
                 st.error("Please provide a Valid Ticker !")
             except KeyError as ke:
                 st.error("Please provide a Valid Ticker !")
+            except AssertionError as ae:
+                st.error("Please provide atleast one unique Ticker in Related Set")
