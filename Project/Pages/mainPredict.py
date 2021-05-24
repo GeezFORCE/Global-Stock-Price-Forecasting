@@ -42,5 +42,9 @@ def mainPredict():
         'savedModelInformation/modelWeights/*.h5', recursive=True), index=0, help='Selecting Weights of the model used for Forecast')
     if st.sidebar.button(label='Forecast', help='Click to start Forecasting, it may take some time'):
         st.sidebar.write('Forecast Started')
-        getForecast(constants.PERIOD_TO_FORECAST,
-                    selectedModelName, selectedModelWeights)
+        try:
+            with st.spinner("Forecasting In Progress"):
+                getForecast(constants.PERIOD_TO_FORECAST,
+                        selectedModelName, selectedModelWeights)
+        except KeyError as ke:
+            st.error("Please provide a Valid Ticker !")
