@@ -15,7 +15,13 @@ def getCompanyOverview(ticker):
         col1, col2  = st.beta_columns(2)
 
         with col1:
-           st.image(Image.open(urlopen(tickerInfo['logo_url'])), use_column_width='auto')
+            try :
+                st.image(Image.open(urlopen(tickerInfo['logo_url'])), use_column_width='auto')
+                
+            except :
+                #Image Error
+                st.write(tickerInfo['logo_url'])
+                st.write("Something went wrong... Unable to load Logo")
 
         with col2:
             st.header(f'{tickerInfo["longName"]} ({tickerInfo["symbol"]})')
