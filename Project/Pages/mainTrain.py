@@ -14,14 +14,15 @@ from .. import Train
 
 # Function to create UI for train 
 def mainTrain():
-    constants.TICKER_TO_PREDICT = st.sidebar.text_input(label='Ticker', value='GOOG', help='Input the ticker')
+    uinputticker = st.sidebar.text_input(label='Ticker', value='GOOG', help='Input the ticker')
+    constants.TICKER_TO_PREDICT = uinputticker.upper()
     st.sidebar.subheader('Related Tickers')
     defaultInputList = "AAPL, AMZN" #  Default ticker inputs
     userInputTickers = st.sidebar.text_area(label='Related Tickers', 
                         value=defaultInputList, 
                         help='Enter similar tickers in comma separated form, greater the similarity between tickers greater the accuracy')
     
-    constants.TICKER_SET = [i.strip(' ') for i in userInputTickers.strip().split(',')]
+    constants.TICKER_SET = [i.strip(' ') for i in userInputTickers.upper().strip().split(',')]
     if constants.TICKER_TO_PREDICT not in constants.TICKER_SET:
         constants.TICKER_SET.append(constants.TICKER_TO_PREDICT) 
     # Yfinance Controls
