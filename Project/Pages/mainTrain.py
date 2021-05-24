@@ -125,4 +125,6 @@ def mainTrain():
                     fig = Train.trainModel()
                 placeholder.plotly_chart(fig)
             except ValueError as ve:
-                st.error("Make sure Tickers in the Training Page sidebar are valid")
+                st.error("Please provide a Valid Ticker !")
+            except KeyError as ke:
+                st.error("Please provide a Valid Ticker !")
