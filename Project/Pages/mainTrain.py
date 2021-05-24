@@ -108,13 +108,16 @@ def mainTrain():
         st.write('One or more inputs are invalid, please enter the right parameters')
     else:
         if st.sidebar.button(label='Train', help='Click to start Training, it may take some time'):
-            tickers = st.beta_columns(len(constants.TICKER_SET))
-            for i in range(len(constants.TICKER_SET)):
-                with tickers[i]:
-                    tickerInfo = yf.Ticker(constants.TICKER_SET[i]).info
-                    st.image(Image.open(urlopen(tickerInfo['logo_url'])), use_column_width='auto')
-                    st.write(f'Previous Close : {tickerInfo["previousClose"]}, {tickerInfo["currency"]}')
-            placeholder = st.empty()
-            with st.spinner("Training In Progress"):
-                fig = Train.trainModel()
-            placeholder.plotly_chart(fig)
+            try:
+                tickers = st.beta_columns(len(constants.TICKER_SET))
+                for i in range(len(constants.TICKER_SET)):
+                    with tickers[i]:
+                        tickerInfo = yf.Ticker(constants.TICKER_SET[i]).info
+                        st.image(Image.open(urlopen(tickerInfo['logo_url'])), use_column_width='auto')
+                        st.write(f'Previous Close : {tickerInfo["previousClose"]}, {tickerInfo["currency"]}')
+                placeholder = st.empty()
+                with st.spinner("Training In Progress"):
+                    fig = Train.trainModel()
+                placeholder.plotly_chart(fig)
+            except ValueError as ve:
+                st.error("Make sure Tickers in the Training Page sidebar are valid")
