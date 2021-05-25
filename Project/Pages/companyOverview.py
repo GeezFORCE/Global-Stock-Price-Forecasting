@@ -25,12 +25,27 @@ def getCompanyOverview(ticker):
 
         with col2:
             st.header(f'{tickerInfo["longName"]} ({tickerInfo["symbol"]})')
-            st.subheader(tickerInfo['sector'])
-            st.write(tickerInfo['country'])
-            st.write(tickerInfo['website'])
-            st.write(tickerInfo['currency'])
-    
-        st.write(tickerInfo['longBusinessSummary'])
+            try:
+                st.subheader(tickerInfo['sector'])
+            except KeyError :
+                st.warning("Sector: Data not available.")
+            try:
+                st.write(tickerInfo['country'])
+            except KeyError :
+                st.warning("Country: Data not available.")
+            try:
+                st.write(tickerInfo['website'])
+            except KeyError :
+                st.warning("Website: Data not available.")
+            try:
+                st.write(tickerInfo['currency'])
+            except KeyError :
+                st.warning("Currency: Data not available.")
+        
+        try:
+            st.write(tickerInfo['longBusinessSummary'])
+        except KeyError :
+            st.warning("longBusinessSummary:Data not avaialable")
 
         st.write("Previous Close : ", tickerInfo["previousClose"])
         st.write("Regular Market Previous Close : ", tickerInfo["regularMarketPreviousClose"])
