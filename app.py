@@ -22,17 +22,42 @@ mainNavigation = st.sidebar.selectbox(label='Navigation',
 
 # If-Else statement to control Main Navigation
 if mainNavigation == 'Overview':
+    with st.beta_expander("Help"):
+        st.write("Coming Soon")
+        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        videoBytes = videoFile.read()
+        st.video(videoBytes)
     st.markdown('# Overview')
     mainOverview()
 elif mainNavigation == 'Train':
+    with st.beta_expander("Help"):
+        st.write("Coming Soon")
+        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        videoBytes = videoFile.read()
+        st.video(videoBytes)
     st.markdown('# Train')
     mainTrain()
 elif mainNavigation == 'Forecast':
+    with st.beta_expander("Help"):
+        st.write("Coming Soon")
+        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        videoBytes = videoFile.read()
+        st.video(videoBytes)
     st.markdown('# Forecast')
     mainPredict()
 elif mainNavigation == 'Sentimental Analysis':
+    with st.beta_expander("Help"):
+        st.write("Coming Soon")
+        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        videoBytes = videoFile.read()
+        st.video(videoBytes)
     st.markdown('# Sentimental Analysis')
     startSentimentalAnalysis()
 elif mainNavigation == 'About':
+    with st.beta_expander("Help"):
+        st.write("Coming Soon")
+        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        videoBytes = videoFile.read()
+        st.video(videoBytes)
     st.markdown('# About')
     mainAbout('main_about.html')
