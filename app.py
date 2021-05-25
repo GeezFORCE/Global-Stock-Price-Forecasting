@@ -35,4 +35,4 @@ elif mainNavigation == 'Sentimental Analysis':
     startSentimentalAnalysis()
 elif mainNavigation == 'About':
     st.markdown('# About')
-    mainAbout()
+    mainAbout('main_about.html')
