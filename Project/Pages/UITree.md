@@ -1,39 +1,42 @@
 # UI Tree
 
 ```
-# Ticker Symbol
-# Main Navigation
-## Overview
-### Company Overview
-### Financials
-### Open, Close Charts
-## Train
-### Ticker Set
-### Data Parameters
-#### Period
-#### Training Parameters
-#### Epochs
-#### Batch Size
-#### Validation Set Percentage
-#### Learning Rate
-### Model Parameters 
-#### Number of LSTM Units
-#### Number of Dense Units
-#### Number of Bidirectional Layers
-#### Number of Dense Layers
-#### Dropoutrate
-#### Return Sequences
-### Train Button
-## Forecast
-### Forecast Period
-### Forecast Button
-### Select Model
-### Select Model Weights
-## Sentimental Analysis
-### Scores
-#### Ticker Set
-#### Analyze
-### Finviz 
-### Twitter
-##About
+.
+├── Help
+└── Navigation
+    ├── Overview
+    │   ├── Ticker
+    │   ├── Ticker Information
+    │   ├── Financials
+    │   └── Charts
+    ├── Train
+    │   ├── Ticker
+    │   ├── Related Tickers
+    │   ├── Data Parameters
+    │   │   ├── Period
+    │   │   ├── Training Parameters
+    │   │   ├── Epochs
+    │   │   ├── Batch Size
+    │   │   ├── Validation Split
+    │   │   └── Learning Rate
+    │   ├── Model Parameters
+    │   │   ├── Number of Normal Units
+    │   │   ├── Number of Dense Units
+    │   │   ├── Number of Normal Layers
+    │   │   ├── Number of Dense Layers
+    │   │   └── Dropoutrate
+    │   └── Train Button
+    ├── Forecast
+    │   ├── Ticker
+    │   ├── Related Tickers
+    │   ├── Forecast Period
+    │   ├── Select Model
+    │   ├── Select Model Weights
+    │   └── Forecast Button
+    ├── Sentimental Analysis
+    │   ├── Ticker
+    │   ├── Related Tickers
+    │   └── Analyze Button
+    └── About
+        └── Toggle Dark/ Light
 ```
