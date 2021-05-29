@@ -8,23 +8,26 @@ import streamlit as st
 from . import companyOverview
 from . import financialsOverview
 from . import stockCharts
+from .searchticker import name_convert
 
 # Function calling Overview Pages
 def mainOverview():
-    ticker = st.sidebar.text_input(label='Ticker', value='GOOG', help='Input the ticker')
+    companyName =  st.sidebar.text_input('Enter Company Name' , value='Google', max_chars=None, key=None, type='default', help="Returns Ticker of Company")
     tickerInformation = st.sidebar.selectbox(label='Ticker Information',
                         options=['Ticker Information', 'Financials', 'Charts'],
                         help='Get information about ticker')
-    if tickerInformation == 'Ticker Information':
-        companyOverview.getCompanyOverview(ticker)
-    elif tickerInformation == 'Financials':
-        financialsOverview.getFinancialsOverview(ticker)
-    elif tickerInformation == 'Charts':
-        try:
-            st.write('Close Price')
-            st.plotly_chart(stockCharts.getStockChart(ticker, ['Close'], 'Close Price'))
-            st.write('Volume Traded')
-            st.plotly_chart(stockCharts.getStockChart(ticker, ['Volume'], 'Volume'))
+    with st.spinner('Fetching Data'):
+        ticker = name_convert(companyName).upper()
+        if tickerInformation == 'Ticker Information':
+            companyOverview.getCompanyOverview(ticker)
+        elif tickerInformation == 'Financials':
+            financialsOverview.getFinancialsOverview(ticker)
+        elif tickerInformation == 'Charts':
+            try:
+                st.write('Close Price')
+                st.plotly_chart(stockCharts.getStockChart(ticker, ['Close'], 'Close Price'))
+                st.write('Volume Traded')
+                st.plotly_chart(stockCharts.getStockChart(ticker, ['Volume'], 'Volume'))
 
-        except :
-            st.warning("Warning !!! Check Parameters.") 
+            except :
+                st.warning("Warning !!! Check Parameters.") 
