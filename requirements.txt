@@ -10,6 +10,6 @@ googlesearch-python==2020.0.2
 pandas==1.2.3
 matplotlib==3.3.4
 py_currency_converter==1.2.0
-beautifulsoup4==4.9.3
+beautifulsoup4==4.9.1
 Pillow==8.2.0
 scikit_learn==0.24.2
