@@ -7,6 +7,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from datetime import datetime
+import os
+import zipfile
+import tempfile
 
 # Internal Imports
 from .DataFetch import getData
@@ -76,3 +79,90 @@ def getForecast(period, modelFilename, weightsFilename):
     if period > 1:
         st.write(f'Forecast forthe next {period} days')
         st.plotly_chart(getStockChart(outputStocks, datelist))
+
+# Function to start the forecasting process for uploaded model with model and weights separately
+def getuploadedForecast(period, uploadedmodel, uploadedweight):
+
+    # Get the dates from today upto a specific period specified
+    datelist = pd.date_range(
+    datetime.today(), periods=period).to_pydatetime().tolist()
+
+    #load json and create model from disk     
+    loaded_model_json = uploadedmodel.read()
+    loaded_model = tf.keras.models.model_from_json(loaded_model_json)
+    
+    #loading weights to newly loaded model
+    if uploadedweight is not None:
+        myzipfile = zipfile.ZipFile(uploadedweight)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            myzipfile.extractall(tmp_dir)
+            root_folder = myzipfile.namelist()[0] 
+            model_dir = os.path.join(tmp_dir, root_folder)
+            loaded_model.load_weights(model_dir)
+            loaded_model.compile(loss=constants.LOSS_FUNCTION,
+                        optimizer=tf.keras.optimizers.Adam(
+                            learning_rate=constants.LEARNING_RATE),
+                        metrics=constants.METRICS
+                        )
+
+    # Get the last 1 month data
+    stocks = pd.DataFrame()
+    stocks = getData(False, '1mo')
+
+    # Get forecast to the next day and the subsequent period if specified
+    for i in range(period):
+        YPredInv = getModelPrediction(loaded_model, stocks)
+        if i == 0:
+            st.write(f'Forecast for tomorrow : {float(inverseConvertCurrency(YPredInv[-1]))}')
+        lastRow = stocks.tail(1)
+        lastRow[constants.TICKER_TO_PREDICT, 'Close'] = YPredInv[-1]
+        stocks = stocks.append(lastRow)
+    
+    # Output the forecasts
+    outputStocks = stocks.tail(period)
+    print(outputStocks.columns)
+    if period > 1:
+        st.write(f'Forecast forthe next {period} days')
+        st.plotly_chart(getStockChart(outputStocks, datelist))
+
+# Function to start the forecasting process for uploaded model with model and weights together
+def getuploadedForecast2(period,uploadedfile):
+
+    # Get the dates from today upto a specific period specified
+    datelist = pd.date_range(
+    datetime.today(), periods=period).to_pydatetime().tolist()
+    
+    #loading single zipped file of model already containing weights
+    if uploadedfile is not None:
+        myzipfile = zipfile.ZipFile(uploadedfile)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            myzipfile.extractall(tmp_dir)
+            root_folder = myzipfile.namelist()[0] 
+            model_dir = os.path.join(tmp_dir, root_folder)
+            loaded_model = tf.keras.models.load_model(model_dir)
+            loaded_model.compile(loss=constants.LOSS_FUNCTION,
+                        optimizer=tf.keras.optimizers.Adam(
+                            learning_rate=constants.LEARNING_RATE),
+                        metrics=constants.METRICS
+                        )
+
+    # Get the last 1 month data
+    stocks = pd.DataFrame()
+    stocks = getData(False, '1mo')
+
+    # Get forecast to the next day and the subsequent period if specified
+    for i in range(period):
+        YPredInv = getModelPrediction(loaded_model, stocks)
+        if i == 0:
+            st.write(f'Forecast for tomorrow : {float(inverseConvertCurrency(YPredInv[-1]))}')
+            lastRow = stocks.tail(1)
+            lastRow[constants.TICKER_TO_PREDICT, 'Close'] = YPredInv[-1]
+            stocks = stocks.append(lastRow)
+    
+    # Output the forecasts
+    outputStocks = stocks.tail(period)
+    print(outputStocks.columns)
+    if period > 1:
+        st.write(f'Forecast forthe next {period} days')
+        st.plotly_chart(getStockChart(outputStocks, datelist))
+        
