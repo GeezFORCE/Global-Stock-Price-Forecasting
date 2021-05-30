@@ -23,41 +23,36 @@ mainNavigation = st.sidebar.selectbox(label='Navigation',
 # If-Else statement to control Main Navigation
 if mainNavigation == 'Overview':
     with st.beta_expander("Help"):
-        st.write("Coming Soon")
-        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        st.write("Get information, charts and financials of any valid stock simply by entering it's name")
+        videoFile = open('./Project/Pages/Videos/Overview-Editted.mp4', 'rb')
         videoBytes = videoFile.read()
         st.video(videoBytes)
     st.markdown('# Overview')
     mainOverview()
 elif mainNavigation == 'Train':
     with st.beta_expander("Help"):
-        st.write("Coming Soon")
-        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        st.write("Create custom machine learning models for specific stocks")
+        videoFile = open('./Project/Pages/Videos/Train-Editted.mp4', 'rb')
         videoBytes = videoFile.read()
         st.video(videoBytes)
     st.markdown('# Train')
     mainTrain()
 elif mainNavigation == 'Forecast':
     with st.beta_expander("Help"):
-        st.write("Coming Soon")
-        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        st.write("Forecast the future price for any stock for a period of maximum 10 days")
+        videoFile = open('./Project/Pages/Videos/Forecast-Editted.mp4', 'rb')
         videoBytes = videoFile.read()
         st.video(videoBytes)
     st.markdown('# Forecast')
     mainPredict()
 elif mainNavigation == 'Sentimental Analysis':
-    with st.beta_expander("Help"):
+    with st.beta_expander("Get scores based on market sentiment for any stock"):
         st.write("Coming Soon")
-        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
+        videoFile = open('./Project/Pages/Videos/SA-Editted.mp4', 'rb')
         videoBytes = videoFile.read()
         st.video(videoBytes)
     st.markdown('# Sentimental Analysis')
     startSentimentalAnalysis()
 elif mainNavigation == 'About':
-    with st.beta_expander("Help"):
-        st.write("Coming Soon")
-        videoFile = open('./Project/Pages/Videos/TestVideo.mp4', 'rb')
-        videoBytes = videoFile.read()
-        st.video(videoBytes)
     st.markdown('# About')
     mainAbout('main_about.html')
