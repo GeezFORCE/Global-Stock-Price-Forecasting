@@ -17,14 +17,15 @@ def startSentimentalAnalysis():
     userInputTickers = [i.strip(' ')
                             for i in userInputTickers.strip().split(',')]
     if st.sidebar.button(label='Analyze', help='Click to start sentimental analysis, it may take some time'):
-        try:
-            finvizMeanScores = FinvizSentimentalAnalysis.finvizSentimentalAnalysis(
-                userInputTickers)
-            finviz, twitter = st.beta_columns(2)
-            with finviz:
-                st.markdown('### Finviz Scores')
-                for i in range(len(finvizMeanScores.index)):
-                    st.write(
-                        f'{finvizMeanScores.index[i]} : {finvizMeanScores[finvizMeanScores.index[i]]}')
-        except:
-            st.error("Please provide a valid ticker !") 
+        with st.spinner("Performing Sentimental Analysis"):
+            try:
+                finvizMeanScores = FinvizSentimentalAnalysis.finvizSentimentalAnalysis(
+                    userInputTickers)
+                finviz, twitter = st.beta_columns(2)
+                with finviz:
+                    st.markdown('### Finviz Scores')
+                    for i in range(len(finvizMeanScores.index)):
+                        st.write(
+                            f'{finvizMeanScores.index[i]} : {finvizMeanScores[finvizMeanScores.index[i]]}')
+            except:
+                st.error("Please provide a valid ticker !") 

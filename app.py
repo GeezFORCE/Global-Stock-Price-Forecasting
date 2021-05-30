@@ -46,8 +46,8 @@ elif mainNavigation == 'Forecast':
     st.markdown('# Forecast')
     mainPredict()
 elif mainNavigation == 'Sentimental Analysis':
-    with st.beta_expander("Get scores based on market sentiment for any stock"):
-        st.write("Coming Soon")
+    with st.beta_expander("Help"):
+        st.write("Get scores based on market sentiment for any stock")
         videoFile = open('./Project/Pages/Videos/SA-Editted.mp4', 'rb')
         videoBytes = videoFile.read()
         st.video(videoBytes)
