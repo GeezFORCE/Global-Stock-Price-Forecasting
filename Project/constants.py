@@ -27,7 +27,7 @@ global NAME
 
 # Stock Selection
 TICKER_TO_PREDICT = 'GOOG'
-TICKER_SET = ['AAPL', 'AMZN']
+TICKER_SET = ['AMZN']
 
 # YFinance Controls
 PERIOD = '10y'
