@@ -6,6 +6,7 @@
 import pandas as pd
 import streamlit as st
 from tensorflow.keras.callbacks import TensorBoard
+from sklearn import metrics
 
 # Local Imports
 from . import constants
@@ -64,6 +65,7 @@ def trainModel():
         callbacks=[tensorboard]#, checkpoint]
     )
 
+
     # Save Model
     SaveModel.saveModelInformation(model)
 
@@ -76,6 +78,18 @@ def trainModel():
     # Plot the results
 
     fig = plot.PlotlyPlotValidation(validation,YPredInv, YValidationInv)
+
+    # Evaluate
+    # st.write(f'Evaluate : {model.evaluate(XValidation, YValidation, batch_size=constants.BATCH_SIZE)}')
+
+    # MSE, MAE etc
+    # st.write(f'MSE: {metrics.mean_squared_error(YValidationInv, YPredInv)}')
+    
+    mae, r2 = st.beta_columns(2)
+    with mae:
+        st.write(f'MAE: {metrics.mean_absolute_error(YValidationInv, YPredInv)}')
+    with r2:
+        st.write(f'R2 Score: {metrics.r2_score(YValidationInv, YPredInv)}')
 
     return fig    
 
