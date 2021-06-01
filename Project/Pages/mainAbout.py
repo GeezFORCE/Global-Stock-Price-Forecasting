@@ -15,6 +15,6 @@ def mainAbout(about_html,width=700,height=575):
     
     # Markdown
     st.write('\n')
-    st.markdown('## Github : [![Github](https://img.shields.io/badge/Skifo-Github-black?style=for-the-badge&logo=Github)](https://github.com/GeezFORCE/MainProject)')
+    st.markdown('## Github : [![Github](https://img.shields.io/badge/Made_With-Github-black?style=for-the-badge&logo=Github)](https://github.com/GeezFORCE/MainProject)')
     st.write('\n')
     st.markdown('## License : [![Creative Commons](http://ForTheBadge.com/images/badges/cc-0.svg)](https://creativecommons.org/share-your-work/public-domain/cc0/)')
