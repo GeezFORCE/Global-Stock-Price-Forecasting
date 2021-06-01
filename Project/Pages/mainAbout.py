@@ -7,11 +7,13 @@ import codecs
 import streamlit.components.v1 as stc
 
 def mainAbout(about_html,width=700,height=575):
+
+    # Custom HTML
     about_file=codecs.open(about_html,'r')
     page=about_file.read()
     stc.html(page,width=width,height=height,scrolling=False)
     
-
+    # Markdown
     st.write('\n')
     st.markdown('## Github : [![Github](https://img.shields.io/badge/Skifo-Github-black?style=for-the-badge&logo=Github)](https://github.com/GeezFORCE/MainProject)')
     st.write('\n')
