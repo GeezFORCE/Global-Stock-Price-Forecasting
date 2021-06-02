@@ -20,9 +20,9 @@ def mainPredict():
     # Inputs
 
     constants.TICKER_TO_PREDICT = (st.sidebar.text_input(
-        label='Ticker', value='GOOG', help='Input the ticker')).upper()
+        label='Ticker', value='SBIN.NS', help='Input the ticker')).upper()
     userInputTickers = st.sidebar.text_area(label='Related Tickers',
-                                            value="AMZN",
+                                            value="ICICIBANK.NS",
                                             help='Enter similar tickers in comma separated form, greater the similarity between tickers greater the accuracy')
     constants.TICKER_SET = [i.strip(' ')
                             for i in userInputTickers.upper().strip().split(',')]

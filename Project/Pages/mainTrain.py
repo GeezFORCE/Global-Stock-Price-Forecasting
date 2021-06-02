@@ -15,10 +15,10 @@ from .. import Train
 
 # Function to create UI for train 
 def mainTrain():
-    uinputticker = st.sidebar.text_input(label='Ticker', value='GOOG', help='Input the ticker')
+    uinputticker = st.sidebar.text_input(label='Ticker', value='SBIN.NS', help='Input the ticker')
     constants.TICKER_TO_PREDICT = uinputticker.upper()
     st.sidebar.subheader('Related Tickers')
-    defaultInputList = "AMZN" #  Default ticker inputs
+    defaultInputList = "ICICIBANK.NS" #  Default ticker inputs
     userInputTickers = st.sidebar.text_area(label='Related Tickers', 
                         value=defaultInputList, 
                         help='Enter similar tickers in comma separated form, greater the similarity between tickers greater the accuracy')
