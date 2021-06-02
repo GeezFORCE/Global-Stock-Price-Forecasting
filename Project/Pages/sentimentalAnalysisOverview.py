@@ -10,7 +10,7 @@ from .. import FinvizSentimentalAnalysis
 # Function fot sentimental analysis page
 def startSentimentalAnalysis():
     st.sidebar.subheader('Tickers')
-    defaultInputList = "SBIN.NS, ICICIBANK.NS"  # Default ticker inputs
+    defaultInputList = "FB, GOOG"  # Default ticker inputs
     userInputTickers = st.sidebar.text_area(label='Tickers',
                                             value=defaultInputList,
                                             help='Enter similar tickers in comma separated form, greater the similarity between tickers greater the accuracy')
