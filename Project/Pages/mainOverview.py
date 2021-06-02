@@ -12,7 +12,7 @@ from .searchticker import name_convert
 
 # Function calling Overview Pages
 def mainOverview():
-    companyName =  st.sidebar.text_input('Enter Company Name' , value='Google', max_chars=None, key=None, type='default', help="Returns Ticker of Company")
+    companyName =  st.sidebar.text_input('Enter Company Name' , value='State Bank Of India', max_chars=None, key=None, type='default', help="Returns Ticker of Company")
     tickerInformation = st.sidebar.selectbox(label='Ticker Information',
                         options=['Ticker Information', 'Financials', 'Charts'],
                         help='Get information about ticker')
