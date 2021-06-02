@@ -85,11 +85,11 @@ def trainModel():
     # MSE, MAE etc
     # st.write(f'MSE: {metrics.mean_squared_error(YValidationInv, YPredInv)}')
     
-    mae, r2 = st.beta_columns(2)
-    with mae:
-        st.write(f'MAE: {metrics.mean_absolute_error(YValidationInv, YPredInv)}')
-    with r2:
-        st.write(f'R2 Score: {metrics.r2_score(YValidationInv, YPredInv)}')
+    # mae, r2 = st.beta_columns(2)
+    # with mae:
+    #     st.write(f'MAE: {metrics.mean_absolute_error(YValidationInv, YPredInv)}')
+    # with r2:
+    #     st.write(f'R2 Score: {metrics.r2_score(YValidationInv, YPredInv)}')
 
     return fig    
 
