@@ -7,12 +7,12 @@ from googlesearch import search
 
 #def getTickerName(compname):
 def name_convert(self) :
-    searchval = 'yahoo finance '+ self
+    searchval = self + 'ticker yahoo finance'
     link = []
     #limits to the first link
     for url in search(searchval, lang='en', num_results=1):
         link.append(url)
-        
+    st.write(link)
     #print("\nTEST ",searchval,link,url)
     link = str(link[0])
     link=link.split("/")
@@ -23,6 +23,7 @@ def name_convert(self) :
         ticker=x[-1]
     #st.error(url)
     #st.error(link)
+    st.write(ticker)
     return(ticker)
 
 # st.title("Search Ticker")
