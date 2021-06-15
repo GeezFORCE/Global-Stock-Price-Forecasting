@@ -2,13 +2,6 @@
     Global Stock Price Forecasting📈 
 </h1>
 <p align="center">
-    <a href="https://www.python.org/">
-        <img src="http://ForTheBadge.com/images/badges/made-with-python.svg" alt="Made With Python">
-    </a>
-    <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">
-        <img src="http://ForTheBadge.com/images/badges/cc-0.svg" alt="Creative Commons">
-    </a>
-    <br>
     <a href="https://github.com/GeezFORCE/MainProject/workflows">
         <img src="https://github.com/GeezFORCE/MainProject/workflows/Build%20Docker%20image%20and%20deploy%20to%20Heroku/badge.svg" alt="Deploy Docker to Heroku">
     </a>
@@ -17,9 +10,17 @@
     </a>
 </p>
 
-## How To Use
+An attempt to predict stock prices of selected tickers using models trained on historical prices
+of similar stocks irrespective of market of trade.
+
+![Overview and Train Page](Screenshot.png)
+
+## Web App
 
 - The application is available as a web app at [Global Stock Price Forecasting](https://gsppp.herokuapp.com)
+
+## Local Installation
+
 - If you want to run it locally you'll need [Git](https://git-scm.com/) and [Pip](https://pypi.org/project/pip/) installed.
 - Run the following commands from the command line
 
@@ -36,6 +37,8 @@ pip3 install -r requirements.txt
 # Run the application
 streamlit run app.py
 ```
+
+- You can also use docker
 
 ## Google Colab Implementation
 
