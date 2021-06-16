@@ -64,6 +64,8 @@ def getForecast(period, modelFilename, weightsFilename):
     # Get the last 1 month data
     stocks = pd.DataFrame()
     stocks = getData(False, '1mo')
+    
+    today=stocks[constants.TICKER_TO_PREDICT, 'Close'][-1]
 
     # Get forecast to the next day and the subsequent period if specified
     for i in range(period):
@@ -79,6 +81,26 @@ def getForecast(period, modelFilename, weightsFilename):
     if period > 1:
         st.write(f'Forecast forthe next {period} days')
         st.plotly_chart(getStockChart(outputStocks, datelist))
+    
+    #Generate comparison table for showing increase or decrease in close price
+    closepricetable=pd.DataFrame()
+    for i in range(len(datelist)):
+        datefinal=pd.to_datetime(datelist[i],utc=False)
+        newrow=pd.DataFrame([inverseConvertCurrency(outputStocks[constants.TICKER_TO_PREDICT]['Close'][i])], index = [datefinal.date()],columns=['ClosePrice'])
+        closepricetable=pd.concat([newrow,closepricetable])
+    
+    closepricetable=closepricetable.sort_index()
+    def color_table(val):
+        if val-inverseConvertCurrency(today)>0:
+            color = 'green'
+        elif val-inverseConvertCurrency(today)<0:
+            color='red'
+        else:
+            color='grey'
+        return f'background-color: {color}'
+    a,b,c=st.beta_columns(3)
+    with b:
+        st.write(closepricetable.style.applymap(color_table, subset=['ClosePrice']))
 
 # Function to start the forecasting process for uploaded model with model and weights separately
 def getuploadedForecast(period, uploadedmodel, uploadedweight):
@@ -108,6 +130,8 @@ def getuploadedForecast(period, uploadedmodel, uploadedweight):
     # Get the last 1 month data
     stocks = pd.DataFrame()
     stocks = getData(False, '1mo')
+    
+    today=stocks[constants.TICKER_TO_PREDICT, 'Close'][-1]
 
     # Get forecast to the next day and the subsequent period if specified
     for i in range(period):
@@ -124,6 +148,26 @@ def getuploadedForecast(period, uploadedmodel, uploadedweight):
     if period > 1:
         st.write(f'Forecast forthe next {period} days')
         st.plotly_chart(getStockChart(outputStocks, datelist))
+    
+    #Generate comparison table for showing increase or decrease in close price
+    closepricetable=pd.DataFrame()
+    for i in range(len(datelist)):
+        datefinal=pd.to_datetime(datelist[i],utc=False)
+        newrow=pd.DataFrame([inverseConvertCurrency(outputStocks[constants.TICKER_TO_PREDICT]['Close'][i])], index = [datefinal.date()],columns=['ClosePrice'])
+        closepricetable=pd.concat([newrow,closepricetable])
+    
+    closepricetable=closepricetable.sort_index()
+    def color_table(val):
+        if val-inverseConvertCurrency(today)>0:
+            color = 'green'
+        elif val-inverseConvertCurrency(today)<0:
+            color='red'
+        else:
+            color='grey'
+        return f'background-color: {color}'
+    a,b,c=st.beta_columns(3)
+    with b:
+        st.write(closepricetable.style.applymap(color_table, subset=['ClosePrice']))
 
 # Function to start the forecasting process for uploaded model with model and weights together
 def getuploadedForecast2(period,uploadedfile):
@@ -149,6 +193,8 @@ def getuploadedForecast2(period,uploadedfile):
     # Get the last 1 month data
     stocks = pd.DataFrame()
     stocks = getData(False, '1mo')
+    
+    today=stocks[constants.TICKER_TO_PREDICT, 'Close'][-1]  
 
     # Get forecast to the next day and the subsequent period if specified
     for i in range(period):
@@ -165,4 +211,24 @@ def getuploadedForecast2(period,uploadedfile):
     if period > 1:
         st.write(f'Forecast forthe next {period} days')
         st.plotly_chart(getStockChart(outputStocks, datelist))
+    
+    #Generate comparison table for showing increase or decrease in close price
+    closepricetable=pd.DataFrame()
+    for i in range(len(datelist)):
+        datefinal=pd.to_datetime(datelist[i],utc=False)
+        newrow=pd.DataFrame([inverseConvertCurrency(outputStocks[constants.TICKER_TO_PREDICT]['Close'][i])], index = [datefinal.date()],columns=['ClosePrice'])
+        closepricetable=pd.concat([newrow,closepricetable])
+    
+    closepricetable=closepricetable.sort_index()
+    def color_table(val):
+        if val-inverseConvertCurrency(today)>0:
+            color = 'green'
+        elif val-inverseConvertCurrency(today)<0:
+            color='red'
+        else:
+            color='grey'
+        return f'background-color: {color}'
+    a,b,c=st.beta_columns(3)
+    with b:
+        st.write(closepricetable.style.applymap(color_table, subset=['ClosePrice']))
         
