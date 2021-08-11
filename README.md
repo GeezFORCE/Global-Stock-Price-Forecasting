@@ -18,6 +18,7 @@ of similar stocks irrespective of market of trade.
 ## Web App
 
 - The application is available as a web app at [Global Stock Price Forecasting](https://gsppp.herokuapp.com)
+- Please wait and reload if the website is not reachable
 
 ## Local Installation
 
@@ -39,7 +40,3 @@ streamlit run app.py
 ```
 
 - You can also use docker
-
-## Google Colab Implementation
-
-[![Colab Implementation](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1UqJFzvPrLxoE2AeeuRV-TytVdM0xNLU_?usp=sharing)
